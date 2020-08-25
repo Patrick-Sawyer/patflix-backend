@@ -6,7 +6,9 @@ git_source(:github) do |repo_name|
 end
 # Gems I have added
 gem 'bcrypt', '~> 3.1', '>= 3.1.15'
-gem 'rack-cors', :require => 'rack/cors' 
+gem 'rack-cors', :require => 'rack/cors'
+gem 'aws-sdk-rails', '~> 2.0', '>= 2.0.1'
+gem 'aws-sdk-resources'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'

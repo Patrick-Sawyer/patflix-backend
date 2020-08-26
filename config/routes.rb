@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: "static#home"
   post :upload, to: "videos#upload"
   get :videos, to: "videos#all_videos"
-  get :uservideos, to: "videos#user_videos"
+  post :uservideos, to: "videos#user_videos"
   post :video, to: "videos#get_video"
   delete :video, to: "videos#destroy"
 end

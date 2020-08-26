@@ -65,9 +65,7 @@ class VideosController < ApplicationController
   def get_video
     video = Video.find(params[:video_id])
     if video
-      render json: {
-        videos: video
-      }
+      render json: video
     else
       render json:{
         status: 500

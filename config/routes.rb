@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"
   root to: "static#home"
   post :upload, to: "videos#upload"
+  get :videos, to: "videos#all_videos"
+  get :uservideos, to: "videos#user_videos"
+  post :video, to: "videos#get_video"
+  delete :video, to: "videos#destroy"
 end

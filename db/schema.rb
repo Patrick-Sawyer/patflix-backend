@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20200825113852) do
 
   create_table "videos", force: :cascade do |t|
     t.string "title"
-    t.string "url"
     t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false

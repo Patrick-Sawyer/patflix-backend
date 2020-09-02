@@ -2,24 +2,23 @@ class VideosController < ApplicationController
 
   def upload
 
-    s3 = Aws::S3::Resource.new
-    bucket = s3.bucket(ENV['AWS_S3_BUCKET'])
-    url = SecureRandom.uuid + "/" + params[:video].original_filename
-    obj = bucket.object(url)
-    obj.put(body: params[:video])
-
     video = Video.create(
       title: params["title"],
       description: params["description"],
       user_id: session[:user_id],
-      url: url
     )
 
     if video
+      s3 = Aws::S3::Resource.new
+      bucket = s3.bucket(ENV['AWS_S3_BUCKET'])
+      obj = bucket.object(video.id.to_s + "/index.mp4")
+      obj.put(body: params[:video])
+
       render json: {
         status: :created,
         video: video
       }
+
     else
       render json: {
         status: 500
